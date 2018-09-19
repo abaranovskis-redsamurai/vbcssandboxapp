@@ -1,0 +1,179 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Employees Service",
+        "x-vb": {
+            "dt-serviceAuthentication": {
+                "type": "none"
+            },
+            "dt-wizardType": "rest"
+        },
+        "version": "1.0.0"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "138.68.79.219:7001",
+    "basePath": "/restapp/rest/1",
+    "definitions": {
+        "Getemployee": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Item"
+                    }
+                },
+                "count": {
+                    "type": "number"
+                },
+                "hasMore": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "number"
+                },
+                "offset": {
+                    "type": "number"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Link1"
+                    }
+                }
+            }
+        },
+        "Item": {
+            "type": "object",
+            "properties": {
+                "EmployeeId": {
+                    "type": "number"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "HireDate": {
+                    "type": "string"
+                },
+                "Salary": {
+                    "type": "number"
+                },
+                "CommissionPct": {
+                    "type": "any"
+                },
+                "ManagerId": {
+                    "type": "number"
+                },
+                "DepartmentId": {
+                    "type": "number"
+                },
+                "ChangeIndicatorAttr": {
+                    "type": "number"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Link"
+                    }
+                }
+            }
+        },
+        "Link": {
+            "type": "object",
+            "properties": {
+                "rel": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                }
+            }
+        },
+        "Link1": {
+            "type": "object",
+            "properties": {
+                "rel": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/Employees": {
+            "get": {
+                "operationId": "getEmployees",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "integer",
+                        "x-vb-defaultValue": "10"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "type": "integer",
+                        "x-vb-defaultValue": "0"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.oracle.adf.resourcecollection+json"
+                ],
+                "responses": {
+                    "default": {
+                        "examples": {
+                            "application/vnd.oracle.adf.resourcecollection+json": "{\n    \"items\": [\n        {\n            \"EmployeeId\": 100,\n            \"FirstName\": \"Steven\",\n            \"LastName\": \"King\",\n            \"Email\": \"SKING\",\n            \"PhoneNumber\": \"515.123.4567\",\n            \"HireDate\": \"2003-06-12\",\n            \"Salary\": 24000,\n            \"CommissionPct\": null,\n            \"ManagerId\": null,\n            \"DepartmentId\": 90,\n            \"ChangeIndicatorAttr\": 262,\n            \"links\": [\n                {\n                    \"rel\": \"self\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/100\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"canonical\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/100\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"lov\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/100/lov/EmployeesLovView1\",\n                    \"name\": \"EmployeesLovView1\",\n                    \"kind\": \"collection\"\n                }\n            ]\n        },\n        {\n            \"EmployeeId\": 101,\n            \"FirstName\": \"Neena\",\n            \"LastName\": \"Kochhar\",\n            \"Email\": \"NKOCHHAR\",\n            \"PhoneNumber\": \"515.123.4568\",\n            \"HireDate\": \"2005-09-21\",\n            \"Salary\": 26100,\n            \"CommissionPct\": null,\n            \"ManagerId\": 100,\n            \"DepartmentId\": 90,\n            \"ChangeIndicatorAttr\": 263,\n            \"links\": [\n                {\n                    \"rel\": \"self\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/101\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"canonical\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/101\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"lov\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/101/lov/EmployeesLovView1\",\n                    \"name\": \"EmployeesLovView1\",\n                    \"kind\": \"collection\"\n                }\n            ]\n        },\n        {\n            \"EmployeeId\": 102,\n            \"FirstName\": \"Lex\",\n            \"LastName\": \"De Haan\",\n            \"Email\": \"LDEHAAN\",\n            \"PhoneNumber\": \"515.123.4569\",\n            \"HireDate\": \"2001-01-13\",\n            \"Salary\": 27000,\n            \"CommissionPct\": null,\n            \"ManagerId\": 100,\n            \"DepartmentId\": 90,\n            \"ChangeIndicatorAttr\": 204,\n            \"links\": [\n                {\n                    \"rel\": \"self\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/102\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"canonical\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/102\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"lov\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/102/lov/EmployeesLovView1\",\n                    \"name\": \"EmployeesLovView1\",\n                    \"kind\": \"collection\"\n                }\n            ]\n        },\n        {\n            \"EmployeeId\": 103,\n            \"FirstName\": \"Alexander\",\n            \"LastName\": \"Hunold\",\n            \"Email\": \"AHUNOLD\",\n            \"PhoneNumber\": \"590.423.4567\",\n            \"HireDate\": \"2006-01-03\",\n            \"Salary\": 1100,\n            \"CommissionPct\": null,\n            \"ManagerId\": 102,\n            \"DepartmentId\": 60,\n            \"ChangeIndicatorAttr\": 123,\n            \"links\": [\n                {\n                    \"rel\": \"self\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/103\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"canonical\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/103\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"lov\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/103/lov/EmployeesLovView1\",\n                    \"name\": \"EmployeesLovView1\",\n                    \"kind\": \"collection\"\n                }\n            ]\n        },\n        {\n            \"EmployeeId\": 104,\n            \"FirstName\": \"Bruce\",\n            \"LastName\": \"Ernst\",\n            \"Email\": \"BERNST\",\n            \"PhoneNumber\": \"590.423.4568\",\n            \"HireDate\": \"2007-05-21\",\n            \"Salary\": 6000,\n            \"CommissionPct\": null,\n            \"ManagerId\": 103,\n            \"DepartmentId\": 60,\n            \"ChangeIndicatorAttr\": 11,\n            \"links\": [\n                {\n                    \"rel\": \"self\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/104\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"canonical\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/104\",\n                    \"name\": \"Employees\",\n                    \"kind\": \"item\"\n                },\n                {\n                    \"rel\": \"lov\",\n                    \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees/104/lov/EmployeesLovView1\",\n                    \"name\": \"EmployeesLovView1\",\n                    \"kind\": \"collection\"\n                }\n            ]\n        }\n    ],\n    \"count\": 5,\n    \"hasMore\": true,\n    \"limit\": 5,\n    \"offset\": 0,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"http://138.68.79.219:7001/restapp/rest/1/Employees\",\n            \"name\": \"Employees\",\n            \"kind\": \"collection\"\n        }\n    ]\n}"
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Getemployee"
+                        },
+                        "description": "The content returned by the server."
+                    },
+                    "x-vb": {
+                        "inferred": {
+                            "default": true
+                        }
+                    }
+                },
+                "x-vb": {
+                    "queryParameters": {
+                        "onlyData": "true"
+                    }
+                },
+                "x-vb-actionHint": "retrieveMany"
+            }
+        }
+    }
+}

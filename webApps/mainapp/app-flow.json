@@ -1,0 +1,26 @@
+{
+  "applicationModelVersion": "18.3.3",
+  "id": "starter",
+  "description": "A new VB app",
+  "defaultPage": "shell",
+  "chains": {},
+  "services": {
+    "employeesService": "../../services/employeesService/service.json"
+  },
+  "translations": {
+    "app": {
+      "path": "./resources/strings/app/nls/app-strings"
+    }
+  },
+  "types": {},
+  "variables": {},
+  "userConfig": {
+    "type": "vb/DefaultSecurityProvider",
+    "configuration": {}
+  },
+  "security":{
+      "access":{
+          "requiresAuthentication": true
+      }
+  }
+}

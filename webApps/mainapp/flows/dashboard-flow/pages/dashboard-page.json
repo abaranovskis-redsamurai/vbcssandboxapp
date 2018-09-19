@@ -1,0 +1,102 @@
+{
+  "pageModelVersion": "18.3.3",
+  "title": "My start page",
+  "description": "The starting page of the flow",
+  "variables": {
+    "getEmployeesListServiceDataProvider": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "employeesService/getEmployees",
+        "idAttribute": "EmployeeId",
+        "itemsPath": "items",
+        "responseType": "flow:getEmployeesResponse3",
+        "uriParameters": {
+          "q": "{{ $page.variables.queryParam }}"
+        }
+      }
+    },
+    "firstNameQueryVar": {
+      "type": "string"
+    },
+    "lastNameQueryVar": {
+      "type": "string"
+    },
+    "queryParam": {
+      "type": "string",
+      "defaultValue": "FirstName = ''"
+    }
+  },
+  "types": {},
+  "chains": {
+    "ButtonClickAction": {
+      "description": "",
+      "variables": {
+        "detail": {
+          "required": true,
+          "type": "any",
+          "input": "fromCaller"
+        }
+      },
+      "root": "ExecuteSearch",
+      "actions": {
+        "ExecuteSearch": {
+          "module": "vb/action/builtin/callModuleFunctionAction",
+          "parameters": {
+            "module": "{{$page.functions}}",
+            "functionName": "executeSeach",
+            "params": [
+              "{{ $page.variables.firstNameQueryVar }}",
+              "{{ $page.variables.lastNameQueryVar }}"
+            ],
+            "returnType": "string"
+          },
+          "outcomes": {
+            "success": "applyQueryParameter"
+          }
+        },
+        "applyQueryParameter": {
+          "module": "vb/action/builtin/assignVariablesAction",
+          "parameters": {
+            "$page.variables.queryParam": {
+              "source": "{{ $chain.results.ExecuteSearch }}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "eventListeners": {
+    "ojButton452631442Click": {
+      "chains": [
+        {
+          "chainId": "ButtonClickAction",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-list-view": {
+        "path": "ojs/ojlistview"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      }
+    }
+  }
+}

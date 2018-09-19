@@ -1,0 +1,64 @@
+{
+    "flowModelVersion": "18.3.3",
+    "id": "main",
+    "description": "Flow main",
+    "defaultPage": "dashboard",
+    "chains": {},
+    "services": {},
+    "types": {
+        "getEmployeesResponse": {
+            "items": [
+                {
+                    "EmployeeId": "number",
+                    "FirstName": "string",
+                    "LastName": "string",
+                    "Email": "string",
+                    "PhoneNumber": "string",
+                    "HireDate": "string",
+                    "Salary": "number"
+                }
+            ]
+        },
+        "@decorators.getEmployeesResponse": {
+            "endpoint": "getEmployees",
+            "service": "employeesService",
+            "path": "response"
+        },
+        "getEmployeesResponse2": {
+            "items": [
+                {
+                    "EmployeeId": "number",
+                    "FirstName": "string",
+                    "LastName": "string",
+                    "Email": "string",
+                    "PhoneNumber": "string",
+                    "Salary": "number"
+                }
+            ]
+        },
+        "@decorators.getEmployeesResponse2": {
+            "endpoint": "getEmployees",
+            "service": "employeesService",
+            "path": "response"
+        },
+        "getEmployeesResponse3": {
+            "items": [
+                {
+                    "EmployeeId": "number",
+                    "FirstName": "string",
+                    "LastName": "string",
+                    "Email": "string",
+                    "PhoneNumber": "string",
+                    "HireDate": "string",
+                    "Salary": "number"
+                }
+            ]
+        },
+        "@decorators.getEmployeesResponse3": {
+            "endpoint": "getEmployees",
+            "service": "employeesService",
+            "path": "response"
+        }
+      },
+    "variables": {}
+}
